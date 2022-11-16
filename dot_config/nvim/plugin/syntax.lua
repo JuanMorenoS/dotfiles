@@ -4,32 +4,7 @@ if not ok then
 end
 
 plug.setup({
-	ensure_installed = {
-		"lua",
-		"rust",
-		"java",
-		"kotlin",
-		"go",
-		"yaml",
-		"json",
-		"bash",
-		"c",
-		"cpp",
-		"dockerfile",
-		"markdown",
-		"cmake",
-		"comment",
-		"gomod",
-		"gowork",
-		"html",
-		"javascript",
-		"typescript",
-		"make",
-		"proto",
-		"regex",
-		"python",
-		"toml",
-	},
+	ensure_installed = "all",
 	auto_install = true,
 	sync_install = false,
 	highlight = {

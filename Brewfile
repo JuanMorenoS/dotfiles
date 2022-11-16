@@ -36,6 +36,7 @@ cask "font-hack-nerd-font"
 
 ## IDE
 brew "neovim"
+brew "ripgrep"
 
 cask "clion"
 cask "intellij-idea"

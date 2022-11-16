@@ -1,5 +1,6 @@
 local ok_telescope, telescope = pcall(require, "telescope")
 local _, actions = pcall(require, "telescope.actions")
+local _, picker = pcall(require, "telescope.pickers")
 if not ok_telescope then
 	return
 end
