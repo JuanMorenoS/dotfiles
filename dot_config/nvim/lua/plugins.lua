@@ -43,6 +43,7 @@ return packer.startup(function(use)
 	-- Finders
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "nvim-telescope/telescope.nvim", tag = "0.1.x" })
+	use({ "BurntSushi/ripgrep" })
 
 	-- File explorer
 	use("nvim-tree/nvim-tree.lua")
