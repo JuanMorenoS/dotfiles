@@ -1,0 +1,10 @@
+[user]
+        name = Juan Moreno
+        email = juan.andres.208@gmail.com
+[pull]
+        rebase = false
+[init]
+        defaultBranch = master
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = nvim
