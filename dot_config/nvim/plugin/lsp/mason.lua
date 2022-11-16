@@ -33,5 +33,6 @@ mason_null_ls.setup({
 		"eslint_d",
 		"ktlint",
 		"yamllint",
+		"rustfmt",
 	},
 })
