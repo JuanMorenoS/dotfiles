@@ -16,6 +16,12 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+
+# powerline10k
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+
 ## Default editor
 export EDITOR="nvim"
 export VISUAL="nvim"

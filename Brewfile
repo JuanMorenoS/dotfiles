@@ -15,6 +15,7 @@ brew "tree"
 brew "wget"
 brew "tmux"
 brew "chezmoi"
+brew "romkatv/powerlevel10k/powerlevel10k"
 
 cask "iterm2"
 cask "zoom"
