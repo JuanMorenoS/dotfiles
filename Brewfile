@@ -16,6 +16,7 @@ brew "wget"
 brew "tmux"
 brew "chezmoi"
 
+cask "iterm2"
 cask "zoom"
 cask "numi"
 cask "keka"
@@ -26,9 +27,8 @@ cask "kindle"
 cask "viscosity"
 cask "google-chrome"
 cask "monitorcontrol"
-cask "logitech-options"
+cask "logi-options-plus"
 cask "font-hack-nerd-font"
-cask "logitech-camera-settings"
 
 
 # DEV 
