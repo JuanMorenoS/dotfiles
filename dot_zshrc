@@ -1,27 +1,21 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export ZSH="$HOME/.oh-my-zsh"
 
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Plugins
 plugins=(
         git 
         aws 
         macos 
         docker 
         kubectl 
-        zsh-autosuggestions 
         sudo 
-        golang)
+        golang
+)
 
 source $ZSH/oh-my-zsh.sh
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
 ## Default editor
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -52,5 +46,6 @@ export CARGO_HOME="${HOME}/.cargo"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 
 
