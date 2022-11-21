@@ -20,3 +20,4 @@ vim.opt.si = true
 vim.opt.spell = true
 
 vim.o.relativenumber = true
+vim.o.number = true
