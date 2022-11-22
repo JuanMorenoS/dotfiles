@@ -87,6 +87,9 @@ return packer.startup(function(use)
 	-- remember the last position of the cursor
 	use("farmergreg/vim-lastplace")
 
+	-- startup page
+	use("goolord/alpha-nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
