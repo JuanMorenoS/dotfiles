@@ -1,6 +1,8 @@
 [user]
         name = Juan Moreno
-        email = juan.andres.208@gmail.com
+        email = juan.andres.208@hotmail.com
+[includeIf "gitdir:~/Documents/genius/"]
+        path = ~/Documents/genius/.gitconfig
 [pull]
         rebase = false
 [init]
