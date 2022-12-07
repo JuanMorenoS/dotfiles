@@ -18,15 +18,33 @@ cmp.setup({
 			snippets.lsp_expand(args.body)
 		end,
 	},
-	mapping = cmp.mapping.preset.insert({
-		["<S-TAB>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-		["<TAB>"] = cmp.mapping.select_next_item(), -- next suggestion
+	mapping = {
+
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif snippets.expand_or_jumpable() then
+				snippets.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif snippets.jumpable(-2) then
+				snippets.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 		["<C-k>"] = cmp.mapping.scroll_docs(-4),
 		["<C-j>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 		["<C-e>"] = cmp.mapping.abort(), -- close completion window
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
-	}),
+	},
 	-- sources for autocompletion
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp
