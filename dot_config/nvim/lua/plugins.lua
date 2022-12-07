@@ -90,6 +90,9 @@ return packer.startup(function(use)
 	-- startup page
 	use("goolord/alpha-nvim")
 
+	-- leap (fast test jumper)
+	use("ggandor/leap.nvim")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
