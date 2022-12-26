@@ -33,7 +33,6 @@ return packer.startup(function(use)
 	use("EdenEast/nightfox.nvim")
 	use({ "Everblush/everblush.nvim", as = "everblush" })
 	use("folke/tokyonight.nvim")
-
 	-- Git tools
 	use("lewis6991/gitsigns.nvim")
 
@@ -92,6 +91,14 @@ return packer.startup(function(use)
 
 	-- leap (fast test jumper)
 	use("ggandor/leap.nvim")
+
+	-- vimwiki to start taking notes and code examples
+	use("lervag/wiki.vim")
+	use("godlygeek/tabular")
+	use("preservim/vim-markdown")
+
+	-- Pane navigation
+	use("christoomey/vim-tmux-navigator")
 
 	if packer_bootstrap then
 		require("packer").sync()

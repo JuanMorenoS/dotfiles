@@ -31,23 +31,24 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_lsp.default_capabilities()
 
--- configure css server
-lspconfig["cssls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+local servers = {
+	"cssls",
+	"html",
+	"tsserver",
+	"gopls",
+	"graphql",
+	"jdtls",
+	"kotlin_language_server",
+	"rust_analyzer",
+	"marksman",
+}
 
--- configure html server
-lspconfig["html"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
--- configure html server
-lspconfig["tsserver"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+for i, server in pairs(servers) do
+	lspconfig[server].setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+end
 
 -- configure lua server (with special settings)
 lspconfig["sumneko_lua"].setup({
@@ -68,29 +69,4 @@ lspconfig["sumneko_lua"].setup({
 			},
 		},
 	},
-})
-
-lspconfig["gopls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["graphql"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["jdtls"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["kotlin_language_server"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
-
-lspconfig["rust_analyzer"].setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
 })

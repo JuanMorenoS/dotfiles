@@ -34,5 +34,6 @@ mason_null_ls.setup({
 		"ktlint",
 		"yamllint",
 		"rustfmt",
+		"markdownlint",
 	},
 })
