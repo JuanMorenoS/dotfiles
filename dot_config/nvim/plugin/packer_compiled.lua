@@ -226,6 +226,11 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
+  tabular = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/tabular",
+    url = "https://github.com/godlygeek/tabular"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -250,6 +255,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-lastplace",
     url = "https://github.com/farmergreg/vim-lastplace"
+  },
+  ["vim-markdown"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-markdown",
+    url = "https://github.com/preservim/vim-markdown"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  ["wiki.vim"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/wiki.vim",
+    url = "https://github.com/lervag/wiki.vim"
   }
 }
 

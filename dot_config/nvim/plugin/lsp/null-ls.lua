@@ -17,8 +17,10 @@ null_ls.setup({
 		formatting.jq,
 		formatting.ktlint,
 		formatting.rustfmt,
+		diagnostics.markdownlint,
 		diagnostics.yamllint,
 		diagnostics.eslint_d,
+		diagnostics.markdownlint,
 	},
 	-- configure format on save
 	on_attach = function(current_client, bufnr)

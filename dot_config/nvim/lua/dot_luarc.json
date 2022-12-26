@@ -3,6 +3,7 @@
     "Lua.diagnostics.globals": [
         "vim",
         "map",
-        "mapMode"
+        "mapMode",
+        "nmap"
     ]
 }
