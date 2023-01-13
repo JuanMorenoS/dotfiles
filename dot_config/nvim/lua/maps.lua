@@ -65,3 +65,13 @@ nmap("<leader>fk", "<cmd>Telescope keymaps<cr>", "[F]ind [k]eymaps")
 -- text jumper
 mapMode({ "n", "x", "o" }, "<leader>s", "<Plug>(leap-forward-to)", "Move to the next word given two chars")
 mapMode({ "n", "x", "o" }, "<leader>S", "<Plug>(leap-backward-to)", "Move to the previous word given two chars")
+
+nmap("gh", "<cmd>Lspsaga lsp_finder<CR>", "[g]o definition ")
+nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ction")
+nmap("gr", "<cmd>Lspsaga rename<CR>", "rename a variable")
+nmap("gp", "<cmd>Lspsaga peek_definition<CR>", "[p]eek definition")
+nmap("gd", "<cmd>Lspsaga goto_definition<CR>", "[g]o to definition")
+
+nmap("<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", "[s]how [l]ine diagnostics")
+nmap("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", "[s]how [c]ursor diagnostics")
+nmap("<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", "[s]how [b]uffer diagnostics")
