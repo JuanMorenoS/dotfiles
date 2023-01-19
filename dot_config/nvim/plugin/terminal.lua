@@ -5,7 +5,7 @@ end
 
 plug.setup({
 	size = 5,
-	open_mapping = [[<c-\>]],
+	open_mapping = [[<C-t>]],
 	shading_factor = 2,
 	direction = "float",
 	float_opts = {
