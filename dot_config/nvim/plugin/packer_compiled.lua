@@ -266,6 +266,11 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
   },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
+  },
   ["wiki.vim"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/wiki.vim",

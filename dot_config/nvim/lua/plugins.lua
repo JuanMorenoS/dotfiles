@@ -100,6 +100,9 @@ return packer.startup(function(use)
 	-- Pane navigation
 	use("christoomey/vim-tmux-navigator")
 
+	-- Multi cursor
+	use("mg979/vim-visual-multi")
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
