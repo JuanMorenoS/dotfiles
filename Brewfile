@@ -4,7 +4,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
-tap "epk/epk"
 
 # Essentials
 brew "git"
@@ -18,7 +17,6 @@ brew "tmux"
 brew "chezmoi"
 brew "romkatv/powerlevel10k/powerlevel10k"
 
-cask "alacritty"
 cask "iterm2"
 cask "zoom"
 cask "numi"
@@ -32,8 +30,6 @@ cask "google-chrome"
 cask "monitorcontrol"
 cask "logi-options-plus"
 cask "font-hack-nerd-font"
-
-cask "font-sf-mono-nerd-font"
 
 
 # DEV 

@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -119,6 +124,11 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/feline.nvim",
     url = "https://github.com/feline-nvim/feline.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -133,6 +143,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["lsp-format-modifications.nvim"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/lsp-format-modifications.nvim",
+    url = "https://github.com/joechrisellis/lsp-format-modifications.nvim"
   },
   ["lspkind.nvim"] = {
     loaded = true,
@@ -183,6 +198,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -270,6 +290,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
     url = "https://github.com/mg979/vim-visual-multi"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   },
   ["wiki.vim"] = {
     loaded = true,

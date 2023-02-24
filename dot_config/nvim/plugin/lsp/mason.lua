@@ -15,13 +15,14 @@ mason_lsp.setup({
 		"tsserver",
 		"html",
 		"cssls",
-		"sumneko_lua",
+		"lua_ls",
 		"jsonls",
 		"graphql",
 		"jdtls",
 		"kotlin_language_server",
 		"rust_analyzer",
 		"yamlls",
+		"marksman",
 	},
 })
 

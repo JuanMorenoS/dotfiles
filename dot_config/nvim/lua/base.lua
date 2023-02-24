@@ -1,5 +1,8 @@
 vim.opt.termguicolors = true
 
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"

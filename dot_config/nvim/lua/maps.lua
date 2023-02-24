@@ -12,7 +12,7 @@ vim.g.mapleader = " "
 
 -- Generals
 mapMode("i", "jk", "<ESC>", "Exit with jk key in insert mode")
-nmap("<leader>nh", ":nohl<CR>", "Remove the highlight")
+-- nmap("<leader>nh", ":nohl<CR>", "Remove the highlight")
 nmap("W", ":w<CR>", "Shortcut to [W]rite")
 nmap("Q", ":q<CR>", "Shortcut to [Q]uit")
 
@@ -55,7 +55,7 @@ nmap("ss", ":split<Return><C-w>w", "[S]plit window (horizontal)")
 nmap("sv", ":vsplit<Return><C-w>w", "[S]plit window [v]ertical")
 
 -- Open file-explorer
-keymap.set("", "<C-.>", ":NvimTreeToggle<Return>")
+keymap.set("", "<leader>.", ":NvimTreeToggle<Return>")
 
 -- Finder
 nmap("<leader>ff", "<cmd>Telescope find_files<cr>", "[F]ind [f]iles")
@@ -71,9 +71,12 @@ mapMode({ "n", "x", "o" }, "<leader>S", "<Plug>(leap-backward-to)", "Move to the
 nmap("gh", "<cmd>Lspsaga lsp_finder<CR>", "[g]o definition ")
 nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", "[C]ode [A]ction")
 nmap("gr", "<cmd>Lspsaga rename<CR>", "rename a variable")
-nmap("gp", "<cmd>Lspsaga peek_definition<CR>", "[p]eek definition")
-nmap("gd", "<cmd>Lspsaga goto_definition<CR>", "[g]o to definition")
+nmap("gd", "<cmd>Lspsaga peek_definition<CR>", "[p]eek definition")
+nmap("gD", "<cmd>Lspsaga goto_definition<CR>", "[g]o to definition")
+nmap("K", "<cmd>Lspsaga hover_doc ++keep<CR>", "Open documentation")
 
 nmap("<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", "[s]how [l]ine diagnostics")
 nmap("<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", "[s]how [c]ursor diagnostics")
 nmap("<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", "[s]how [b]uffer diagnostics")
+
+mapMode({ "n", "v", "x" }, "<leader>fo", "<cmd> lua vim.lsp.buf.format()<CR>", "[F]ormat the current buffer")

@@ -33,6 +33,8 @@ return packer.startup(function(use)
 	use("EdenEast/nightfox.nvim")
 	use({ "Everblush/everblush.nvim", as = "everblush" })
 	use("folke/tokyonight.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
+
 	-- Git tools
 	use("lewis6991/gitsigns.nvim")
 
@@ -65,7 +67,9 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp")
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+	use("j-hui/fidget.nvim")
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+        use("joechrisellis/lsp-format-modifications.nvim")
 
 	-- Tree sitter
 	use({
@@ -102,6 +106,12 @@ return packer.startup(function(use)
 
 	-- Multi cursor
 	use("mg979/vim-visual-multi")
+
+	-- Notify
+	use("rcarriga/nvim-notify")
+
+	-- Which key
+	use("folke/which-key.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

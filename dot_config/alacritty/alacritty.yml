@@ -1,10 +1,15 @@
-live_config_reload: true
+import:
+  - ~/.config/alacritty/alacritty-theme/themes/city_lights.yaml
+env:
+  TERM: xterm-256color
+
+live_config_reloa: true
 
 window:
-  opacity: 0.85
+  opacity: 0.90
   padding:
-    x: 18
-    y: 16
+    x: 8
+    y: 10
   dynamic_padding: false
   decorations: buttonless
 
@@ -12,4 +17,12 @@ font:
   normal:
     family: "SFMono Nerd Font"
     style: Regular
-  size: 22.0
+  size: 18.0
+
+key_bindings:
+  - { key: Backslash, mods: Control, action: ToggleViMode }
+  - { key: Right, mods: Alt, chars: "\x1BF" }
+  - { key: Left, mods: Alt, chars: "\x1BB" }
+  - { key: N, mods: Super, action: CreateNewWindow }
+  # - { key: W, mods: Super, action: None }
+  - { key: Q, mods: Super, action: None }
