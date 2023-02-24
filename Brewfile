@@ -7,6 +7,9 @@ tap "homebrew/core"
 
 # Essentials
 brew "git"
+brew "lazygit"
+brew "fzf"
+brew "zoxide"
 brew "nmap"
 brew "htop"
 brew "tldr"
@@ -18,6 +21,7 @@ brew "chezmoi"
 brew "romkatv/powerlevel10k/powerlevel10k"
 
 cask "iterm2"
+cask "alacritty"
 cask "zoom"
 cask "numi"
 cask "keka"
