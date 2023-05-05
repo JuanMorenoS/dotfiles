@@ -20,8 +20,6 @@ local keymap = vim.keymap
 local on_attach = function(client, bufnr)
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
-	local lsp_format_modifications = require("lsp-format-modifications")
-	lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
 end
 
 -- used to enable autocompletion (assign to every lsp server config)
@@ -37,6 +35,7 @@ local servers = {
 	"kotlin_language_server",
 	"rust_analyzer",
 	"marksman",
+        "pylsp"
 }
 
 for i, server in pairs(servers) do

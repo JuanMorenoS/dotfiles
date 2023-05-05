@@ -12,7 +12,7 @@ vim.g.mapleader = " "
 
 -- Generals
 mapMode("i", "jk", "<ESC>", "Exit with jk key in insert mode")
--- nmap("<leader>nh", ":nohl<CR>", "Remove the highlight")
+nmap("<leader>nh", ":nohl<CR>", "Remove the highlight")
 nmap("W", ":w<CR>", "Shortcut to [W]rite")
 nmap("Q", ":q<CR>", "Shortcut to [Q]uit")
 

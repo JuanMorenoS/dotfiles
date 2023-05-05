@@ -144,11 +144,6 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
   },
-  ["lsp-format-modifications.nvim"] = {
-    loaded = true,
-    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/lsp-format-modifications.nvim",
-    url = "https://github.com/joechrisellis/lsp-format-modifications.nvim"
-  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -173,6 +168,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  neorg = {
+    load_after = {},
+    loaded = true,
+    needs_bufread = true,
+    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/opt/neorg",
+    url = "https://github.com/nvim-neorg/neorg"
   },
   ["nightfox.nvim"] = {
     loaded = true,
@@ -246,11 +248,6 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
-  tabular = {
-    loaded = true,
-    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/tabular",
-    url = "https://github.com/godlygeek/tabular"
-  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
@@ -276,11 +273,6 @@ _G.packer_plugins = {
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-lastplace",
     url = "https://github.com/farmergreg/vim-lastplace"
   },
-  ["vim-markdown"] = {
-    loaded = true,
-    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-markdown",
-    url = "https://github.com/preservim/vim-markdown"
-  },
   ["vim-tmux-navigator"] = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
@@ -295,11 +287,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
-  },
-  ["wiki.vim"] = {
-    loaded = true,
-    path = "/Users/juanmoreno/.local/share/nvim/site/pack/packer/start/wiki.vim",
-    url = "https://github.com/lervag/wiki.vim"
   }
 }
 
@@ -308,6 +295,7 @@ time([[Defining packer_plugins]], false)
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
 vim.cmd [[ packadd nvim-ts-autotag ]]
+vim.cmd [[ packadd neorg ]]
 time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false

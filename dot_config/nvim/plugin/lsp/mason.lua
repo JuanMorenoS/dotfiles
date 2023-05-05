@@ -23,6 +23,7 @@ mason_lsp.setup({
 		"rust_analyzer",
 		"yamlls",
 		"marksman",
+		"pylsp",
 	},
 })
 

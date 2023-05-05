@@ -69,7 +69,6 @@ return packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
 	use("j-hui/fidget.nvim")
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-        use("joechrisellis/lsp-format-modifications.nvim")
 
 	-- Tree sitter
 	use({
@@ -97,9 +96,10 @@ return packer.startup(function(use)
 	use("ggandor/leap.nvim")
 
 	-- vimwiki to start taking notes and code examples
-	use("lervag/wiki.vim")
-	use("godlygeek/tabular")
-	use("preservim/vim-markdown")
+	-- use("lervag/wiki.vim")
+	-- use("godlygeek/tabular")
+	-- use("preservim/vim-markdown")
+	use({ "nvim-neorg/neorg", after = "nvim-treesitter", run = ":Neorg sync-parsers" })
 
 	-- Pane navigation
 	use("christoomey/vim-tmux-navigator")
