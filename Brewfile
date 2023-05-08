@@ -4,6 +4,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "epk/epk"
 
 # Essentials
 brew "git"
@@ -34,6 +35,7 @@ cask "google-chrome"
 cask "monitorcontrol"
 cask "logi-options-plus"
 cask "font-hack-nerd-font"
+cask "font-sf-mono-nerd-font"
 
 
 # DEV 
