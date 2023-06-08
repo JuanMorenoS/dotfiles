@@ -14,6 +14,7 @@ local servers = {
   "rust_analyzer",
   "marksman",
   "pylsp",
+  "terraformls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -22,3 +23,4 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+

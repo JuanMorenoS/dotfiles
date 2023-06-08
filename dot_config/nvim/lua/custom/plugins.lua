@@ -55,6 +55,32 @@ local plugins = {
     "jay-babu/mason-null-ls.nvim",
     opts = overrides.mason_null_ls,
   },
+  {
+    "rust-lang/rust.vim",
+    ft = "rust",
+    init = function()
+      vim.g.rustfmt_autosave = 1
+    end,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      return overrides.nvimtree
+    end,
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    dependencies = "neovim/nvim-lspconfig",
+    config = function()
+      require "custom.configs.rust-tools"
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+  },
 }
+
+require "custom.configs.nvimtree"
 
 return plugins

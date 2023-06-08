@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "setup_lsp_keymaps",
+        "do_general_on_attach_stuff",
+        "return",
+        "opts"
+    ]
+}

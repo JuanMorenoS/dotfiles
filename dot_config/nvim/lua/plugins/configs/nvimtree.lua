@@ -1,57 +1,4 @@
-local M = {}
-
-M.treesitter = {
-  ensure_installed = {
-    "vim",
-    "lua",
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "tsx",
-    "c",
-    "markdown",
-    "markdown_inline",
-    "hcl",
-    "terraform",
-  },
-  indent = {
-    enable = true,
-    -- disable = {
-    --   "python"
-    -- },
-  },
-}
-
-M.mason = {
-  "tsserver",
-  "html",
-  "cssls",
-  "lua_ls",
-  "jsonls",
-  "graphql",
-  "jdtls",
-  "kotlin_language_server",
-  "rust_analyzer",
-  "yamlls",
-  "marksman",
-  "pylsp",
-  "denols",
-}
-
-M.mason_null_ls = {
-  "prettier",
-  "stylua",
-  "jq",
-  "eslint_d",
-  "ktlint",
-  "yamllint",
-  "rustfmt",
-  "markdownlint",
-}
-
--- git support in nvimtree
-M.nvimtree = {
+local options = {
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
@@ -84,8 +31,8 @@ M.nvimtree = {
     },
   },
   renderer = {
-    root_folder_label = true,
-    highlight_git = true,
+    root_folder_label = false,
+    highlight_git = false,
     highlight_opened_files = "none",
 
     indent_markers = {
@@ -97,19 +44,19 @@ M.nvimtree = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = true,
+        git = false,
       },
 
       glyphs = {
-        default = "",
+        default = "󰈚",
         symlink = "",
         folder = {
-          default = "",
-          empty = "",
-          empty_open = "",
+          default = "",
+          empty = "",
+          empty_open = "",
           open = "",
-          symlink = "",
-          symlink_open = "",
+          symlink = "",
+          symlink_open = "",
           arrow_open = "",
           arrow_closed = "",
         },
@@ -127,6 +74,4 @@ M.nvimtree = {
   },
 }
 
-
-
-return M
+return options
