@@ -16,4 +16,10 @@ keymap.set("", "<Down>", "<Nop>")
 keymap.set("", "x", '"_x')
 keymap.set("", "c", '"_c')
 
+-- remove the arrow keys for normal MODE
+keymap.set("n", "<Left>", "<Nop>")
+keymap.set("n", "<Right>", "<Nop>")
+keymap.set("n", "<Up>", "<Nop>")
+keymap.set("n", "<Down>", "<Nop>")
+
 
