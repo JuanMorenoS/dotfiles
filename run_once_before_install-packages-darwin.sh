@@ -7,6 +7,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Installing everything in the Brewfile
 # TODO change the path
-brew bundle --file /Users/${whoami}/.local/share/chezmoi/Brewfile -v
+brew bundle --file ~/.local/share/chezmoi/Brewfile -v
 
 
