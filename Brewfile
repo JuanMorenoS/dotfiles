@@ -22,6 +22,7 @@ brew "romkatv/powerlevel10k/powerlevel10k"
 
 cask "iterm2"
 cask "alacritty"
+cask "amethyst"
 cask "numi"
 cask "keka"
 cask "firefox"
