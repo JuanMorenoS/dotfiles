@@ -9,5 +9,6 @@ type = "git-repo"
 url = "https://github.com/tmux-plugins/tpm.git"
 refreshPeriod = "168h"
 ["~/powerlevel10k"]
-type = "archive"
+type = "git-repo"
 url = "https://github.com/romkatv/powerlevel10k.git"
+refreshPeriod = "168h"
