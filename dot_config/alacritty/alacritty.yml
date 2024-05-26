@@ -15,8 +15,12 @@ window:
 
 font:
   normal:
-    family: "SFMono Nerd Font"
-    style: Regular
+    family: "jetbrainsmono nerd font"
+    style: Medium
+  bold:
+    style: Extrabold
+  italic:
+    style: Italic
   size: 18.0
 
 key_bindings:
