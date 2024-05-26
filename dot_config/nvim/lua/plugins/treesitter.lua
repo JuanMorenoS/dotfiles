@@ -28,7 +28,13 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "ron",
+        "rust",
+        "toml",
+        "dockerfile",
       })
     end
+    opts.highlight = { enable = true }
+    opts.indent = { enable = true }
   end,
 }

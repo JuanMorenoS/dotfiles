@@ -8,6 +8,7 @@ return {
         "shfmt",
         "flake8",
         "codelldb",
+        "hadolint",
       })
     end
   end,
