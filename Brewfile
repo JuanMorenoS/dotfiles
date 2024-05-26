@@ -29,12 +29,14 @@ cask "firefox"
 cask "raycast"
 cask "shottr"
 cask "kindle"
+cask "calibre"
 cask "viscosity"
 cask "google-chrome"
 cask "monitorcontrol"
 cask "logi-options-plus"
 cask "font-hack-nerd-font"
 cask "font-sf-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 
 
 # DEV 
