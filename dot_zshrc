@@ -21,6 +21,7 @@ plugins=(
         golang
         tmux
         zoxide
+        eza
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -48,6 +49,10 @@ alias vim=nvim
 alias t=tmux
 alias td="tmux detach"
 
+# Utils
+alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias cd=z
+
 # DEV setup
 
 #Gstreamer setup
@@ -71,3 +76,10 @@ export CARGO_HOME="${HOME}/.cargo"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/Users/juanmoreno/.bun/_bun" ] && source "/Users/juanmoreno/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
