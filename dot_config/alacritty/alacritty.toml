@@ -1,0 +1,52 @@
+import = ["/Users/juan.moreno/.config/alacritty/alacritty-theme/themes/city_lights.yaml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 18.0
+
+[font.bold]
+style = "Extrabold"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "jetbrainsmono nerd font"
+style = "Medium"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Backslash"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "None"
+key = "Q"
+mods = "Super"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.9
+
+[window.padding]
+x = 8
+y = 10
