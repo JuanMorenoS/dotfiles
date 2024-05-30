@@ -1,6 +1,5 @@
 tap "datawire/blackbird"
 tap "homebrew/bundle"
-tap "homebrew/core"
 tap "epk/epk"
 
 # Essentials
