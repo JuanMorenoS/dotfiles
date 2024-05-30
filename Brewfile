@@ -1,7 +1,5 @@
 tap "datawire/blackbird"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "epk/epk"
 
@@ -19,7 +17,6 @@ brew "tree"
 brew "wget"
 brew "tmux"
 brew "chezmoi"
-brew "romkatv/powerlevel10k/powerlevel10k"
 
 cask "iterm2"
 cask "alacritty"
