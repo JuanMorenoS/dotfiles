@@ -1,0 +1,129 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = 'path'
+    style = 'diamond'
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Path }}'
+    background = '#29315A'
+    foreground = '#3EC669'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      style = 'mixed'
+
+  [[blocks.segments]]
+    type = 'git'
+    style = 'diamond'
+    foreground_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}', '{{ if gt .Ahead 0 }}#B388FF{{ end }}', '{{ if gt .Behind 0 }}#B388FF{{ end }}']
+    leading_diamond = ' '
+    trailing_diamond = ''
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    background = '#29315A'
+    foreground = '#43CCEA'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      branch_max_length = 25.0
+      fetch_stash_count = true
+      fetch_status = true
+      fetch_upstream_icon = true
+
+  [[blocks.segments]]
+    type = 'status'
+    style = 'plain'
+    template = 'x '
+    background = ''
+    foreground = '#C94A16'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    type = 'node'
+    style = 'plain'
+    template = '{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }} {{ .Full }}'
+    background = ''
+    foreground = '#5fb157'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_package_manager = true
+      fetch_version = true
+      npm_icon = '<#FE4A49> npm</> '
+      yarn_icon = '<#44FFD2> yarn</> '
+
+  [[blocks.segments]]
+    type = 'crystal'
+    style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+    background = ''
+    foreground = '#4063D8'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_version = true
+
+  [[blocks.segments]]
+    type = 'ruby'
+    style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+    background = ''
+    foreground = '#DE3F24'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_version = true
+
+  [[blocks.segments]]
+    type = 'python'
+    style = 'plain'
+    template = ' {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}'
+    background = ''
+    foreground = '#FED142'
+    Text = ''
+    Duration = 0
+    NameLength = 0
+
+    [blocks.segments.properties]
+      display_mode = 'context'
+      fetch_virtual_env = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    template = '➜ '
+    background = ''
+    foreground = '#63F08C'
+    Text = ''
+    Duration = 0
+    NameLength = 0

@@ -21,7 +21,6 @@ require("lazy").setup({
     -- Editor
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.leap" },
-    { import = "lazyvim.plugins.extras.editor.trouble-v3" },
     { import = "lazyvim.plugins.extras.editor.refactoring" },
     -- Lang
     { import = "lazyvim.plugins.extras.lang.docker" },
