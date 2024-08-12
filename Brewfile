@@ -1,8 +1,5 @@
 tap "datawire/blackbird"
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
 tap "epk/epk"
 
 # Essentials
