@@ -206,5 +206,25 @@ if.app-name-regex-substring = 'safari'
 run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
+if.app-name-regex-substring = 'chatgpt'
+run = 'move-node-to-workspace W'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'alacritty'
 run = 'move-node-to-workspace T'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'slack'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'zoom'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'mail'
+run = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'busycal'
+run = 'move-node-to-workspace C'
