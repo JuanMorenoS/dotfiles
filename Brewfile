@@ -38,6 +38,7 @@ cask "logi-options-plus"
 cask "font-hack-nerd-font"
 cask "font-sf-mono-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
+cask "nikitabobko/tap/aerospace"
 
 
 # DEV 
