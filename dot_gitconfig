@@ -1,12 +1,12 @@
 [user]
-        name = Juan Moreno
-        email = juan.andres.208@hotmail.com
-[includeIf "gitdir:~/Documents/genius/"]
-        path = ~/Documents/genius/.gitconfig
+  name = Juan Moreno
+[includeIf "gitdir:~/.local/share/chezmoi"]
+  [user]
+    email = juan.andres.208@gmail.com
 [pull]
-        rebase = false
+  rebase = false
 [init]
-        defaultBranch = master
+  defaultBranch = master
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = nvim
+  excludesfile = ~/.gitignore_global
+  editor = nvim
