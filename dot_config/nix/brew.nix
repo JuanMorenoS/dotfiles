@@ -73,12 +73,10 @@
   ];
 
   casks = [
-    "aerospace"
-    "alacritty"
+    "ghostty"
     "betterdisplay"
     "calibre"
     "chatgpt"
-    "clion"
     "docker"
     "firefox"
     "font-hack-nerd-font"
@@ -86,7 +84,6 @@
     "font-sf-mono-nerd-font"
     "google-chrome"
     "intellij-idea"
-    "iterm2"
     "keka"
     "kindle"
     "logi-options+"
@@ -98,6 +95,5 @@
     "visual-studio-code"
     "vlc"
     "whatsapp"
-    "zed"
   ];
 }
