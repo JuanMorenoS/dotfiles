@@ -34,7 +34,7 @@ eval "$(zoxide init zsh)"
 alias ci="export AWS_PROFILE=ci"
 alias prod="export AWS_PROFILE=prod"
 # vim
-alias vim=nvim
+# alias vim=nvim
 
 # tmux 
 alias t=tmux
@@ -42,7 +42,7 @@ alias td="tmux detach"
 
 # Utils
 # alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias cd=z
+# alias cd=z
 
 # DEV setup
 
