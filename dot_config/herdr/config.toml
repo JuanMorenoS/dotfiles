@@ -33,3 +33,25 @@ type = "popup"
 command = "lazygit"
 width = "80%"
 height = "80%"
+
+[ui]
+# Etiquetas de agente en los bordes de los panes partidos, para saber quien
+# corre donde sin mirar el sidebar.
+show_agent_labels_on_pane_borders = true
+
+# --- Template del sidebar ---
+# Sin colores hardcodeados a proposito: asi el tema sigue cambiando solo
+# entre mocha y latte con el modo del sistema.
+
+[ui.sidebar.spaces]
+# Fila 1: estado + nombre del space. Fila 2: rama y su estado de git.
+row_gap = 0
+rows = [["state_icon", "workspace"], ["branch", "git_status"]]
+
+[ui.sidebar.agents]
+# Fila 1: estado + donde vive. Fila 2: en que anda. Fila 3: que agente es.
+row_gap = 0
+rows = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace", "tab"], ["terminal_title_stripped"], ["agent"]]
