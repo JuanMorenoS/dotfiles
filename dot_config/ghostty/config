@@ -1,4 +1,4 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:mocha.conf,light:latte.conf
 font-family = "jetbrainsmono nerd font"
 font-size = 18
 # This is the configuration file for Ghostty.
@@ -45,3 +45,18 @@ font-size = 18
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+keybind = shift+enter=text:\n
+
+# ==========================
+# Integracion con herdr
+# ==========================
+
+# La ventana inicial arranca directo en herdr (el multiplexor).
+# Solo aplica a la ventana de arranque: cmd+n / cmd+t siguen dando una
+# shell normal, asi que si herdr falla no te quedas sin terminal.
+initial-command = /Users/juan.moreno/.local/bin/herdr
+
+# Solo la Option DERECHA actua como Alt, para que los atajos alt+... de
+# herdr (ej. prefix+alt+g -> lazygit) le lleguen. La Option izquierda
+# sigue componiendo Unicode (option+e -> e con acento, option+n -> enye).
+macos-option-as-alt = right

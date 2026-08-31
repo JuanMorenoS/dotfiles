@@ -1,0 +1,35 @@
+# herdr configuration
+# Gestionado por chezmoi. Solo valores que difieren del default.
+# Ver todos los defaults: herdr --default-config
+
+[theme]
+# Sigue el modo claro/oscuro del terminal host (Ghostty usa
+# dark:mocha.conf / light:latte.conf, asi que herdr hace juego).
+auto_switch = true
+dark_name = "catppuccin"
+light_name = "catppuccin-latte"
+
+[terminal]
+# Panes/tabs nuevos heredan el cwd del pane de origen.
+new_cwd = "follow"
+
+[keys]
+# Mismo prefix que tmux para no romper memoria muscular.
+# OJO: si corres herdr DENTRO de tmux, ctrl+b se lo come tmux primero.
+prefix = "ctrl+b"
+
+# Navegacion de panes por prefix. ctrl+hjkl se deja libre a proposito:
+# lo usa el puente de Neovim (lua/plugins/herdr.lua) para saltar de
+# ventana de nvim a pane de herdr sin cambiar de tecla.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# lazygit en popup modal, sin tocar el layout de la tab.
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "lazygit"
+width = "80%"
+height = "80%"

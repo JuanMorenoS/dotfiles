@@ -34,7 +34,5 @@ return {
         "dockerfile",
       })
     end
-    opts.highlight = { enable = true }
-    opts.indent = { enable = true }
   end,
 }

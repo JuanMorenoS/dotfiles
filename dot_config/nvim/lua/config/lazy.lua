@@ -14,7 +14,6 @@ require("lazy").setup({
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- coding plugins
-    { import = "lazyvim.plugins.extras.coding.copilot" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     --DAP
     { import = "lazyvim.plugins.extras.dap.core" },
