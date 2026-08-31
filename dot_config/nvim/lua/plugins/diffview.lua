@@ -42,7 +42,14 @@ return {
       function()
         -- "base...HEAD" usa el merge-base: solo lo que trae la rama, sin
         -- arrastrar commits que la base gano por su cuenta.
-        vim.cmd("DiffviewOpen " .. base_branch() .. "...HEAD")
+        --
+        -- --imply-local es lo que hace navegable el diff: sin el, AMBOS lados
+        -- son blobs de git (buftype=nowrite, diffview:///.git/<hash>/...) y no
+        -- se les adjunta ningun LSP. Con el, el lado derecho pasa a ser el
+        -- archivo real del working tree, asi que roslyn se adjunta y gd, gr y
+        -- hover funcionan ahi. El lado izquierdo sigue siendo un blob: es la
+        -- version antigua y no existe en disco.
+        vim.cmd("DiffviewOpen " .. base_branch() .. "...HEAD --imply-local")
       end,
       desc = "Diffview: rama vs base (PR)",
     },

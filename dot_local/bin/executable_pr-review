@@ -133,7 +133,9 @@ fi
 echo "trayendo $BRANCH..."
 git fetch origin "$BRANCH" --quiet || die "no pude traer la rama $BRANCH"
 
-NVIM_CMD="DiffviewOpen ${BASE}...HEAD"
+# --imply-local hace que el lado derecho sea el archivo real del working tree
+# en vez de un blob de git. Sin el, ningun LSP se adjunta y no puedes navegar.
+NVIM_CMD="DiffviewOpen ${BASE}...HEAD --imply-local"
 
 # --- modo --here ------------------------------------------------------------
 
