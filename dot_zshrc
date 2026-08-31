@@ -26,15 +26,17 @@ fi
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-eval "$(zoxide init zsh)"
+#eval "$(zoxide init zsh)"
 
 # Aliases
 
 # AWS
-alias ci="export AWS_PROFILE=ci"
-alias prod="export AWS_PROFILE=prod"
+alias dev="export AWS_PROFILE=arcus_dev_su"
+alias staging="export AWS_PROFILE=arcus_staging"
+alias prod="export AWS_PROFILE=arcus_prod"
+alias su_prod="export AWS_PROFILE=arcus_prod_su"
 # vim
-# alias vim=nvim
+alias vim=nvim
 
 # tmux 
 alias t=tmux
@@ -42,7 +44,7 @@ alias td="tmux detach"
 
 # Utils
 # alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
-# alias cd=z
+#alias cd=z
 
 # DEV setup
 
@@ -74,3 +76,95 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# MindBody
+
+export OKTA_AWSCLI_ORG_DOMAIN="mbo.okta.com"
+export OKTA_AWSCLI_OIDC_CLIENT_ID="0oa15fv0jojsnIUtQ358"
+export OKTA_AWSCLI_AWS_ACCOUNT_FEDERATION_APP_ID="0oafjkddhOnLDD8sZ356"
+export OKTA_AWSCLI_WRITE_AWS_CREDENTIALS=true
+export OKTA_AWSCLI_OPEN_BROWSER=true
+export OKTA_AWSCLI_SESSION_DURATION=43200
+# export OKTA_AWSCLI_IAM_ROLE="arn:aws:iam::1234:role/Circle-CI-ops"
+export TILT_NAMESPACE=juan-moreno
+export AWS_SDK_LOAD_CONFIG=1
+
+aws_login() {
+  echo "Logging into all AWS roles..."
+  saml2aws login --skip-prompt --force --idp-account arcus_prod_su
+  saml2aws login --skip-prompt --force --idp-account arcus_prod
+  echo "AWS login complete."
+}
+
+kp() {
+  AWS_PROFILE=arcus_prod k9s
+}
+
+# Superuser role = port-forward, admin
+kpsu() {
+  AWS_PROFILE=arcus_prod_su k9s
+}
+
+### --- Optional Quality of Life --- ###
+
+# Show which AWS profile is active in your shell
+aws_prompt() {
+  if [[ -n "$AWS_PROFILE" ]]; then
+    echo "%{$fg[cyan]%}[$AWS_PROFILE]%{$reset_color%}"
+  fi
+}
+
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by Windsurf
+export PATH="/Users/juan.moreno/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/juan.moreno/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+
+# ==========================================
+# Catppuccin Mocha para herramientas CLI
+# ==========================================
+
+# fzf
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--color=border:#6c7086,label:#cdd6f4"
+
+# eza (24-bit: 38;2;R;G;B)
+export EZA_COLORS="\
+di=38;2;137;180;250:\
+ex=38;2;166;227;161:\
+ln=38;2;148;226;213:\
+or=38;2;243;139;168:\
+ur=38;2;249;226;175:\
+uw=38;2;243;139;168:\
+ux=38;2;166;227;161:\
+ue=38;2;166;227;161:\
+gr=38;2;249;226;175:\
+gw=38;2;243;139;168:\
+gx=38;2;166;227;161:\
+tr=38;2;249;226;175:\
+tw=38;2;243;139;168:\
+tx=38;2;166;227;161:\
+uu=38;2;203;166;247:\
+gu=38;2;186;194;222:\
+sn=38;2;166;227;161:\
+sb=38;2;148;226;213:\
+da=38;2;127;132;156:\
+xx=38;2;108;112;134"
+
+# Secretos y overrides locales (fuera de chezmoi, no se publica)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

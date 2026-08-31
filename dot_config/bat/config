@@ -1,0 +1,3 @@
+# Catppuccin Mocha viene incluido en bat >= 0.25, no hay que bajar nada.
+--theme="Catppuccin Mocha"
+--style="numbers,changes,header"

@@ -1,0 +1,92 @@
+# Catppuccin Mocha
+foreground: &foreground "#cdd6f4"
+background: &background "#1e1e2e"
+current_line: &current_line "#313244"
+selection: &selection "#45475a"
+comment: &comment "#6c7086"
+cyan: &cyan "#94e2d5"
+green: &green "#a6e3a1"
+orange: &orange "#fab387"
+magenta: &magenta "#f5c2e7"
+mauve: &mauve "#cba6f7"
+blue: &blue "#89b4fa"
+red: &red "#f38ba8"
+yellow: &yellow "#f9e2af"
+
+k9s:
+  body:
+    fgColor: *foreground
+    bgColor: *background
+    logoColor: *mauve
+  prompt:
+    fgColor: *foreground
+    bgColor: *background
+    suggestColor: *orange
+  info:
+    fgColor: *magenta
+    sectionColor: *foreground
+  dialog:
+    fgColor: *foreground
+    bgColor: *background
+    buttonFgColor: *foreground
+    buttonBgColor: *mauve
+    buttonFocusFgColor: *background
+    buttonFocusBgColor: *blue
+    labelFgColor: *orange
+    fieldFgColor: *foreground
+  frame:
+    border:
+      fgColor: *selection
+      focusColor: *mauve
+    menu:
+      fgColor: *foreground
+      keyColor: *magenta
+      numKeyColor: *magenta
+    crumbs:
+      fgColor: *background
+      bgColor: *current_line
+      activeColor: *mauve
+    status:
+      newColor: *cyan
+      modifyColor: *blue
+      addColor: *green
+      errorColor: *red
+      highlightColor: *orange
+      killColor: *comment
+      completedColor: *comment
+    title:
+      fgColor: *foreground
+      bgColor: *current_line
+      highlightColor: *orange
+      counterColor: *mauve
+      filterColor: *magenta
+  views:
+    charts:
+      bgColor: default
+      defaultDialColors: [*mauve, *red]
+      defaultChartColors: [*mauve, *red]
+    table:
+      fgColor: *foreground
+      bgColor: *background
+      cursorFgColor: *background
+      cursorBgColor: *selection
+      header:
+        fgColor: *foreground
+        bgColor: *background
+        sorterColor: *cyan
+    xray:
+      fgColor: *foreground
+      bgColor: *background
+      cursorColor: *current_line
+      graphicColor: *blue
+      showIcons: false
+    yaml:
+      keyColor: *magenta
+      colonColor: *blue
+      valueColor: *foreground
+    logs:
+      fgColor: *foreground
+      bgColor: *background
+      indicator:
+        fgColor: *mauve
+        bgColor: *background
