@@ -9,6 +9,15 @@ auto_switch = true
 dark_name = "catppuccin"
 light_name = "catppuccin-latte"
 
+# Sidebar mas oscuro que el area de panes, para que el limite se lea aunque
+# no haya borde (herdr no dibuja marco cuando hay un solo pane).
+# Ambos son colores oficiales de Catppuccin Mocha: crust es el mas oscuro
+# de la paleta, base es el fondo normal. Si el contraste te resulta muy
+# fuerte, cambia crust por mantle (#181825), que es un paso mas suave.
+[theme.custom]
+sidebar_bg = "#11111b"   # crust
+panel_bg   = "#1e1e2e"   # base
+
 [terminal]
 # Panes/tabs nuevos heredan el cwd del pane de origen.
 new_cwd = "follow"
