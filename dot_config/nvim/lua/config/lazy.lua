@@ -23,6 +23,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.refactoring" },
     -- Lang
     { import = "lazyvim.plugins.extras.lang.docker" },
+    -- .NET: 16 repos con C#. El LSP se cambia a roslyn en plugins/dotnet.lua.
+    { import = "lazyvim.plugins.extras.lang.dotnet" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.json" },
