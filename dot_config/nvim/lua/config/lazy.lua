@@ -39,6 +39,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     -- Utils
     { import = "lazyvim.plugins.extras.util.dot" },
+    -- Review de PRs de GitHub. Arrastra lang.git y usa el picker activo (fzf-lua).
+    { import = "lazyvim.plugins.extras.util.octo" },
     { import = "lazyvim.plugins.extras.util.project" },
     -- import/override with your plugins
     { import = "plugins" },
