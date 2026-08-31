@@ -1,0 +1,193 @@
+#!/usr/bin/env bash
+# pr-review — revisa un PR con el codigo navegable, no solo el diff.
+#
+# Deja la rama del PR en disco (worktree aislado o checkout directo) y abre
+# nvim con Diffview contra la base. Como son archivos reales, el LSP sigue
+# vivo: gd, gr, hover e inlay hints funcionan sobre el codigo del companero.
+set -euo pipefail
+
+die() { printf 'pr-review: %s\n' "$1" >&2; exit 1; }
+
+usage() {
+  cat <<'USAGE'
+pr-review — revisar un PR con el codigo navegable
+
+  pr-review <numero|url>          worktree aislado en un space de herdr
+  pr-review --here <numero|url>   checkout en el repo actual (LSP ya caliente)
+  pr-review --branch <rama>       por rama, sin gh (Azure DevOps o cualquiera)
+  pr-review --list                worktrees de review abiertos
+  pr-review --clean <rama>        borra el worktree de esa rama
+
+--here y --branch se pueden combinar.
+
+Worktree vs --here: el worktree no toca tu trabajo en curso, pero el LSP
+reindexa desde cero (en soluciones .NET grandes eso es un minuto largo).
+--here reusa el indice, a cambio de mover la rama de tu repo.
+USAGE
+}
+
+MODE=worktree
+BRANCH=""
+TARGET=""
+ACTION=review
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --here)   MODE=here; shift ;;
+    --branch) BRANCH="${2:-}"; [ -n "$BRANCH" ] || die "--branch necesita un nombre"; shift 2 ;;
+    --list)   ACTION=list; shift ;;
+    --clean)  ACTION=clean; BRANCH="${2:-}"; [ -n "$BRANCH" ] || die "--clean necesita una rama"; shift 2 ;;
+    -h|--help) usage; exit 0 ;;
+    -*)       die "opcion desconocida: $1" ;;
+    *)        TARGET="$1"; shift ;;
+  esac
+done
+
+git rev-parse --git-dir >/dev/null 2>&1 || die "no estas dentro de un repo git"
+REPO_ROOT=$(git rev-parse --show-toplevel)
+REPO_NAME=$(basename "$REPO_ROOT")
+
+if [ "$ACTION" = list ]; then
+  git worktree list
+  exit 0
+fi
+
+if [ "$ACTION" = clean ]; then
+  WT=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH" '
+    /^worktree /{p=$2} /^branch /{if($2==b) print p}')
+  [ -n "$WT" ] || die "no hay worktree para la rama $BRANCH"
+
+  # Si herdr adopto ese worktree, hay que cerrar tambien su workspace; si no,
+  # queda un space huerfano apuntando a un directorio que ya no existe.
+  if [ "${HERDR_ENV:-}" = 1 ]; then
+    WS=$(herdr worktree list --cwd "$REPO_ROOT" 2>/dev/null | python3 -c '
+import sys, json, os
+try:
+    ws = json.load(sys.stdin)["result"].get("worktrees", [])
+except Exception:
+    sys.exit(0)
+target = os.path.realpath(os.environ["WT"])
+for w in ws:
+    if os.path.realpath(w.get("path", "")) == target:
+        print(w.get("open_workspace_id") or "")
+        break
+' WT="$WT" 2>/dev/null) || WS=""
+    if [ -n "$WS" ]; then
+      herdr worktree remove --workspace "$WS" --force >/dev/null 2>&1 \
+        && echo "space de herdr cerrado: $WS"
+    fi
+  fi
+
+  git worktree remove --force "$WT" 2>/dev/null || true
+  git worktree prune
+  echo "worktree borrado: $WT"
+
+  # -d y no -D a proposito: si la rama tiene commits sin integrar, git se
+  # niega y la conserva. Mejor dejar una rama de mas que perder trabajo.
+  if git branch -d "$BRANCH" 2>/dev/null; then
+    echo "rama local borrada: $BRANCH"
+  else
+    echo "rama local $BRANCH conservada (tiene commits sin integrar; git branch -D para forzar)"
+  fi
+  exit 0
+fi
+
+# --- resolver rama y base ---------------------------------------------------
+
+# La base sale de origin/HEAD, que es cache local: puede quedar desfasada si el
+# repo migro de master a main. Se refresca con: git remote set-head origin -a
+default_base() {
+  local h
+  if h=$(git symbolic-ref --quiet refs/remotes/origin/HEAD 2>/dev/null); then
+    echo "${h#refs/remotes/}"; return
+  fi
+  for c in origin/main origin/master origin/develop; do
+    if git rev-parse --verify --quiet "$c" >/dev/null 2>&1; then echo "$c"; return; fi
+  done
+  echo "HEAD~1"
+}
+
+if [ -n "$BRANCH" ]; then
+  BASE=$(default_base)
+  LABEL="$BRANCH"
+  echo "rama : $BRANCH"
+elif [ -n "$TARGET" ]; then
+  command -v gh >/dev/null 2>&1 || die "gh no esta instalado (para ADO usa --branch)"
+  META=$(gh pr view "$TARGET" --json number,title,headRefName,baseRefName,author 2>/dev/null) \
+    || die "no pude leer el PR '$TARGET' (en repos de Azure DevOps usa --branch)"
+  eval "$(printf '%s' "$META" | python3 -c '
+import sys, json, shlex
+d = json.load(sys.stdin)
+print("NUM=" + shlex.quote(str(d["number"])))
+print("TITLE=" + shlex.quote(d["title"]))
+print("BRANCH=" + shlex.quote(d["headRefName"]))
+print("BASE=" + shlex.quote("origin/" + d["baseRefName"]))
+print("AUTHOR=" + shlex.quote(d["author"]["login"]))
+')"
+  LABEL="PR #$NUM"
+  printf '#%s  %s\n  autor: %s\n  rama : %s -> %s\n' "$NUM" "$TITLE" "$AUTHOR" "$BRANCH" "$BASE"
+else
+  usage; exit 2
+fi
+
+echo "trayendo $BRANCH..."
+git fetch origin "$BRANCH" --quiet || die "no pude traer la rama $BRANCH"
+
+NVIM_CMD="DiffviewOpen ${BASE}...HEAD"
+
+# --- modo --here ------------------------------------------------------------
+
+if [ "$MODE" = here ]; then
+  if [ -n "$(git status --porcelain)" ]; then
+    die "tienes cambios sin guardar; haz commit o stash antes de --here"
+  fi
+  git switch "$BRANCH" 2>/dev/null || git switch -c "$BRANCH" --track "origin/$BRANCH"
+  exec nvim -c "$NVIM_CMD"
+fi
+
+# --- modo worktree ----------------------------------------------------------
+
+# El worktree lo crea git, no herdr: `herdr worktree create --base X` crea la
+# rama DESDE X, lo que para revisar un PR deja el contenido de la base con el
+# nombre de la rama del PR (diff vacio). Aqui queremos la rama tal como esta en
+# el remoto, asi que git hace el checkout y herdr solo adopta el resultado.
+WT="${HOME}/.herdr/worktrees/${REPO_NAME}/${BRANCH//\//-}"
+
+if [ -d "$WT" ]; then
+  echo "worktree ya existia: $WT"
+else
+  mkdir -p "$(dirname "$WT")"
+  if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
+    # Ya tienes esa rama local: la reusamos tal cual, sin moverla.
+    git worktree add "$WT" "$BRANCH" >/dev/null
+  else
+    git worktree add "$WT" -b "$BRANCH" --track "origin/$BRANCH" >/dev/null
+  fi
+fi
+
+# Verificacion: si el worktree no difiere de la base, algo salio mal.
+N=$(git -C "$WT" diff --name-only "${BASE}...HEAD" | wc -l | tr -d ' ')
+echo "worktree : $WT"
+echo "archivos cambiados vs ${BASE}: $N"
+[ "$N" = "0" ] && echo "  aviso: 0 archivos. Revisa que $BRANCH este actualizada."
+
+if [ "${HERDR_ENV:-}" = 1 ]; then
+  # --cwd ancla la accion al repo: sin el, herdr usa el workspace enfocado,
+  # que puede no estar dentro de un git work tree.
+  OUT=$(herdr worktree open --cwd "$REPO_ROOT" --path "$WT" --label "$LABEL" --no-focus 2>&1) \
+    || die "herdr worktree open fallo: $OUT"
+  eval "$(printf '%s' "$OUT" | python3 -c '
+import sys, json, shlex
+r = json.load(sys.stdin)["result"]
+pane = r.get("root_pane") or r.get("pane") or {}
+ws = r.get("workspace") or {}
+print("PANE=" + shlex.quote(pane.get("pane_id", "")))
+print("WS="   + shlex.quote(ws.get("workspace_id", "")))
+')"
+  [ -n "$PANE" ] || die "no pude leer el pane del worktree"
+  echo "space    : $WS  (pane $PANE)"
+  herdr pane run "$PANE" "nvim -c '${NVIM_CMD}'" >/dev/null
+  echo "nvim abierto en el space nuevo. Ve ahi con ctrl+b w."
+else
+  cd "$WT" && exec nvim -c "$NVIM_CMD"
+fi
